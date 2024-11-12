@@ -1,0 +1,15 @@
+/target
+tags
+.vscode/
+.vs/
+.idea/
+.settings/
+pkg/
+.cargo/
+
+
+# Added by cargo
+#
+# already existing elements were commented out
+
+#/target
