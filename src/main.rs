@@ -19,6 +19,10 @@ const SERVED_FILES: &[&str] = &[
     "new-api/pkg/new_api_bg.wasm.d.ts",
     "new-api/pkg/new_api.d.ts",
     "new-api/pkg/new_api.js",
+    "old-api/pkg/old_api_bg.wasm",
+    "old-api/pkg/old_api_bg.wasm.d.ts",
+    "old-api/pkg/old_api.d.ts",
+    "old-api/pkg/old_api.js",
 ];
 
 fn handle_request(base_path: &Path, request: Request) {

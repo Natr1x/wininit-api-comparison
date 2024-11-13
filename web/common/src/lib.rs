@@ -92,7 +92,7 @@ impl<'window> Graphics<'window> {
     pub async fn new(
         width: u32, height: u32, window: impl Into<wgpu::SurfaceTarget<'window>>
     ) -> Result<Self, GraphicsError> {
-        log::info!("Begin creating graphics context");
+        log::info!("Creating graphics with {{ width: {width}, height: {height} }}");
 
         let instance = wgpu::Instance::default();
         let surface = instance.create_surface(window)?;

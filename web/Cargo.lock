@@ -1195,6 +1195,11 @@ dependencies = [
 name = "old-api"
 version = "0.1.0"
 dependencies = [
+ "common",
+ "log",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
  "winit 0.29.15",
 ]
 

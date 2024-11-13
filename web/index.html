@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hexagons</title>
+    <title>Api Comparison</title>
     <style>
         body {
             margin: 0px;
-            background: #fff;
+            background: #113;
+            color: #eed;
             width: 100%;
             height: 100%;
         }
@@ -18,6 +19,15 @@
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: row;
+        }
+
+        .triangle {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            margin: 0;
+            flex: 1;
             flex-direction: column;
         }
 
@@ -26,20 +36,63 @@
             flex: 1;
             contain: size;
         }
+
+        @media (prefers-color-scheme: light) {
+            body.adaptive {
+                background: #eee;
+                color: #111;
+            }
+        }
     </style>
 </head>
 
 <body id="wasm-example">
-    <div class="root">
-        <canvas class="main-canvas" id="new-api-canvas"></canvas>
-    </div>
+    <header>
+        <h1>New Trait based wininit Api vs the Old</h1>
+
+        <p>
+            For some reason I cannot get the new api to handle resizing without
+            flickering when using wgpu and wasm.
+        </p>
+        <p>
+            The triangles below drawn with the old and the new api respectively.
+            The code should be mostly the same but at least on firefox running
+            in hyprland there seems to be some issue with the new api.
+        </p>
+        <p>
+            The old api also behaves a bit weirdly in this example.
+            But I haven't checked if that also happens in isolation.
+        </p>
+        <p> <em>Try resizing this window<em> </p>
+    </header>
+    <main>
+        <div class="root">
+            <div class="triangle">
+                <label for="old-api-canvas">Old API Triangle</label>
+                <canvas class="main-canvas" id="old-api-canvas"></canvas>
+            </div>
+            <div class="triangle">
+                <label for="new-api-canvas">New API Triangle</label>
+                <canvas class="main-canvas" id="new-api-canvas"></canvas>
+            </div>
+        </div>
+    </main>
 
     <script type="module">
-        import init from "./new-api/pkg/new_api.js";
-        init().then(() => {
-            console.log("WASM Loaded");
+        import init_old from "./old-api/pkg/old_api.js";
+        init_old().then(() => {
+            console.log("Old Api WASM Loaded");
         });
     </script>
+
+    <script type="module">
+        import init_new from "./new-api/pkg/new_api.js";
+        // Delay start to allow css stuff to settle or something..??
+        setTimeout(() => init_new().then(() => {
+            console.log("New Api WASM Loaded");
+        }), 1);
+    </script>
+
 </body>
 
 </html>
