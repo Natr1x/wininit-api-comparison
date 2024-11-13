@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexagons</title>
+    <style>
+        body {
+            margin: 0px;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+        }
+
+        .root {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-canvas {
+            margin: 0;
+            flex: 1;
+            contain: size;
+        }
+    </style>
+</head>
+
+<body id="wasm-example">
+    <div class="root">
+        <canvas class="main-canvas" id="new-api-canvas"></canvas>
+    </div>
+
+    <script type="module">
+        import init from "./new-api/pkg/new_api.js";
+        init().then(() => {
+            console.log("WASM Loaded");
+        });
+    </script>
+</body>
+
+</html>
+

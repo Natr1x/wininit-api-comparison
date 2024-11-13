@@ -1,0 +1,15 @@
+[package]
+name = "new-api"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+winit = { version = "0.30", features = ["rwh_05"] }
+log.workspace = true
+wasm-bindgen.workspace = true
+wasm-bindgen-futures.workspace = true
+web-sys = { workspace = true, features = ["Document", "Element", "Window", "Location"] }
+common = { version = "0.1.0", path = "../common" }
